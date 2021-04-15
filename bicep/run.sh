@@ -1,7 +1,7 @@
 #! /bin/bash
 
-export PREFIX="webinar1bc"
-export SUFFIX="randsuffix"
+export PREFIX="bicepk8s"
+export SUFFIX="rg"
 export RG_NAME=$PREFIX-$SUFFIX
 export RG_LOCATION="eastus"
 export BICEP_FILE="000-main.bicep"

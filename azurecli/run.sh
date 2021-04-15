@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PREFIX="k8supdemo"
+export PREFIX="clik8s"
 export SUFFIX="rg"
 export RG_NAME=$PREFIX-$SUFFIX
 export RG_LOCATION="eastus"
