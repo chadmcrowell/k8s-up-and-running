@@ -1,14 +1,10 @@
 #! /bin/bash
 
-export TF_VAR_prefix="webinar1tf"
-export TF_VAR_suffix="randomsuffix"
+export TF_VAR_prefix="tfk8sup"
+export TF_VAR_suffix="rg"
 export RG_LOCATION="eastus2"
-export WEBINAR_PARAMETERS="terraform.tfvars"
+# export PARAMETERS="terraform.tfvars"
 export SSH_KEY="~/.ssh/id_rsa.pub"
-export ACR_ROLE="AcrPull"
-
-# Login to your Azure account
-# az login
 
 # Plan and deploy your Terraform template
 #
@@ -24,7 +20,7 @@ terraform init
 # You may also pass in parameters/variables via shell export TF_VAR_variable_name or via the command line with a -var flag
 # See: https://www.terraform.io/docs/language/values/variables.html#variable-definition-precedence
 
-terraform plan -var "location=$RG_LOCATION" -var "acrRole=$ACR_ROLE" -var "adminPublicKey=$SSH_KEY" -var-file $WEBINAR_PARAMETERS -out tfplan
+terraform plan -var "location=$RG_LOCATION" -var "acrRole=$ACR_ROLE" -var "adminPublicKey=$SSH_KEY" -var-file $PARAMETERS -out tfplan
 
 # Apply the plan file (e.g. tfplan) and provison the requested resources
 #
