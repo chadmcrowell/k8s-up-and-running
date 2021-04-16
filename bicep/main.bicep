@@ -1,6 +1,6 @@
 // params
 @description('The DNS prefix to use with hosted Kubernetes API server FQDN.')
-param prefix string
+param dnsPrefix string = 'clus01'
 
 @description('The name of the Managed Cluster resource.')
 param clusterName string = 'bicep-k8sup'
@@ -23,7 +23,7 @@ var addressPrefix = '20.0.0.0/16'
 var subnetName = 'Subnet01'
 var subnetPrefix = '20.0.0.0/24'
 var virtualNetworkName = 'AKSVNET01'
-var nodeResourceGroup = 'rg-${prefix}-${clusterName}'
+var nodeResourceGroup = 'rg-${dnsPrefix}-${clusterName}'
 var tags = {
   environment: 'production'
   vmssValue: 'true'
@@ -64,7 +64,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
   properties: {
     kubernetesVersion: kubernetesVersion
     enableRBAC: true
-    dnsPrefix: prefix
+    dnsPrefix: dnsPrefix
     agentPoolProfiles: [
       {
         name: agentPoolName
