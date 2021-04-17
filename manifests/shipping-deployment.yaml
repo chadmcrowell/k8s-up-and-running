@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  labels:
+    service: shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: shipping
+  template:
+    metadata:
+      labels:
+        service: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: robot-shop/rs-shipping:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # it's Java it needs lots of memory
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1000Mi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+      restartPolicy: Always
