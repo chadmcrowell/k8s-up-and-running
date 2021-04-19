@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cart
-          image: robotshop:latest
+          image: robotshop/rs-cart:latest
           imagePullPolicy: IfNotPresent
           # agent networking access
           env:

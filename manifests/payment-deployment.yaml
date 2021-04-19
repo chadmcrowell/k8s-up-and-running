@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: robot-shop/rs-payment:latest
+          image: robotshop/rs-payment:latest
           imagePullPolicy: IfNotPresent
           # agent networking access
           env:

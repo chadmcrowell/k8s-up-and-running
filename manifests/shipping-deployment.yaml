@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: shipping
-          image: robot-shop/rs-shipping:latest
+          image: robotshop/rs-shipping:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
