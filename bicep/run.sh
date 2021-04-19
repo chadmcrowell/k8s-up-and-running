@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 export PREFIX="bicepk8s"
 export SUFFIX="rg"
