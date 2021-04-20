@@ -14,7 +14,7 @@ param location string = resourceGroup().location
 param agentCount int = 3
 
 @description('The size of the Virtual Machine.')
-param agentVMSize string = 'Standard_D2_v3'
+param agentVMSize string = 'Standard_DS2_v2'
 
 // vars
 var kubernetesVersion = '1.19.7'
