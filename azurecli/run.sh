@@ -11,16 +11,16 @@ az group create --name $RG_NAME --location $LOCATION
 
 # create aks cluster with 3 nodes
 az aks create \
--g $RG_NAME \ # resource group name
--n $CLUSTER_NAME \ # cluster name
---enable-managed-identity \ # enable managed identity vs. service principal
--c 3 \ # 3 nodes
---ssh-key-value /home/$USER/.ssh/id_rsa.pub \ # ssh keys to log into nodes
--k 1.19.7 \ # kubernetes version
---enable-cluster-autoscaler \ # enable cluster autoscaler
---min-count 3 \ # minimum of 3 nodes (for the autoscaler)
---max-count 5 \ # maximum of 5 nodes (for the autoscaler)
---load-balancer-sku standard # create a standard azure load balancer
+-g $RG_NAME \
+-n $CLUSTER_NAME \
+--enable-managed-identity \
+-c 3 \
+--ssh-key-value /home/$USER/.ssh/id_rsa.pub \
+-k 1.19.7 \
+--enable-cluster-autoscaler \
+--min-count 3 \
+--max-count 5 \
+--load-balancer-sku standard
 
 
 
