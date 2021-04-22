@@ -21,10 +21,10 @@ kubectl get componentstatus
 # list all resources available to create (not currently created)
 kubectl api-resources
 
-# get the raw metrics for all nodes
+# get the raw metrics for nodes
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 
-# get the raw metrics for all nodes
+# get the raw metrics for pods
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods
 
 # list all events in the default namespace
