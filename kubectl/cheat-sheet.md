@@ -244,7 +244,7 @@ kubectl edit po nginx
 </p>
 </details>
 
-### DEPLOYMENT & REPLICASET INFO
+### DEPLOYMENT & REPLICASETS
 
 <details><summary>show</summary>
 <p>
