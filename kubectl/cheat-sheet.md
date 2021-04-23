@@ -219,6 +219,15 @@ kubectl get pod nginx -o yaml --export > podconfig.yml
 # list all the pods that are running
 kubectl get po --field-selector status.phase=Running
 
+# run 'mongo' command inside terminal in pod 'mongodb'
+kubectl exec -it mongodb mongo
+
+# list environment variables in pod 'nginx'
+kubectl exec nginx env
+
+# open shell to container 'cart' in pod 'mypod'
+kubectl exec -it mypod -c cart -- /bin/bash
+
 # get the log output for a pod named 'nginx' in the default namespace
 kubectl logs nginx
 
