@@ -9,3 +9,16 @@ spec:
       targetPort: 8080
   selector:
     service: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxysvc
+spec:
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+  sessionAffinity: None
+  type: ClusterIP

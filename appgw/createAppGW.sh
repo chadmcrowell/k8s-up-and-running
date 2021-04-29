@@ -4,7 +4,7 @@
 az network public-ip create -n RobotAppIP -g bicepk8s-rg --allocation-method Static --sku Standard
 
 # create app gw
-PUBIP=$(az network public-ip list -g bicepk8s-rg --query [1].name -o tsv)
+PUBIP=$(az network public-ip list -g bicepk8s-rg --query [].name -o tsv)
 az network application-gateway create -n robotAppGW -l eastus -g bicepk8s-rg --sku Standard_v2 --public-ip-address $PUBIP
 
 # enable acig add-on
