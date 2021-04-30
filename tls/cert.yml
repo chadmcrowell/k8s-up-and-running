@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rbot-tls
+spec:
+  secretName: rbot-tls
+  dnsNames:
+    - robotshop.eastus.cloudapp.azure.com
+  issuerRef:
+    name: rbot-tls
+    kind: ClusterIssuer
