@@ -38,6 +38,9 @@ kubectl get events -n kube-system
 
 # watch as events occur in real time in the default namespace
 kubectl get events -w
+
+# print the join command to join more nodes to the kubeadm cluster
+sudo kubeadm token create --print-join-command
 ```
 
 </p>
