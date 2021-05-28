@@ -41,6 +41,12 @@ kubectl get events -w
 
 # print the join command to join more nodes to the kubeadm cluster
 sudo kubeadm token create --print-join-command
+
+# list the tokens that haven't expired yet for kubeadm clusters
+sudo kubeadm token list
+
+# generate a new token
+sudo kubeadm token generate
 ```
 
 </p>
