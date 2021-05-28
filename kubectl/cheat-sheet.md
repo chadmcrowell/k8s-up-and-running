@@ -265,8 +265,41 @@ kubectl create deploy nginx --image nginx
 # create a deployment yaml file named deploy.yml
 kubectl create deploy nginx --image nginx --dry-run=client -o yaml > deploy.yml
 
+# create deployment from file
+kubectl create -f deploy.yml
+
+# create deployment and record history (useful for viewing rollout history later)
+kubectl create -f deploy.yml --record
+
+# apply the yaml configuration if resource already exists (will create resource if none exists)
+kubectl apply -f deploy.yml
+
+# apply the yaml configuration if resource already exists (will fail of no resource exists)
+kubectl replace -f deploy.yml
+
+# undo deployment rollout 
+kubectl rollout undo deploy nginx
+
+# undo rollout to a specific version
+kubectl rollout undo deploy nginx --to-revision=3
+
+# pause deployment while rolling out (good for canary releases)
+kubectl rollout pause deploy nginx 
+
+# resume rollout after pause
+kubectl rollout resume deploy nginx
+
+# get status of rollout
+kubectl rollout status deployment/nginx
+
+# get rollout history
+kubectl rollout history deploy nginx
+
 # scale deployment 'nginx' up to 5 replicas
 kubectl scale deploy nginx --replicas=5
+
+# set a new image for the deployment with verbose output
+kubectl set image deployments/nginx app=nginx:1.14.2 --v 6
 
 # edit deployment 'nginx'
 kubectl edit deploy nginx
@@ -322,6 +355,9 @@ kubectl create svc nodeport nodeport-svc --tcp=8080:80
 
 # create a nodePort service 'app-service' from exposing deployment 'nginx'
 kubectl expose deploy nginx --name=app-service --port=80 --type=NodePort
+
+# create a load balancer type service from a deployment
+kubectl expose deploy nginx --port 80 --target-port 80 --type LoadBalancer
 
 # list all services in the default namespace
 kubectl get svc
