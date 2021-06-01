@@ -17,7 +17,7 @@ param agentCount int = 3
 param agentVMSize string = 'Standard_DS2_v2'
 
 // vars
-var kubernetesVersion = '1.19.7'
+var kubernetesVersion = '1.20.7'
 var subnetRef = '${vn.id}/subnets/${subnetName}'
 var addressPrefix = '20.0.0.0/16'
 var subnetName = 'Subnet01'
