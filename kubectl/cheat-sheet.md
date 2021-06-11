@@ -189,6 +189,9 @@ kubectl run nginx --image=nginx
 # create pod 'busybox', open a shell inside of the container, and delete pod when exit shell
 kubectl run busybox --image=busybox --rm -it -- sh
 
+# run a temporary pod (deleted when exit) and open a shell inside the container
+kubectl run curlpod --image=nicolaka/netshoot --rm -it -- sh
+
 # create a pod yaml file named pod.yml
 kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yml
 
