@@ -88,6 +88,9 @@ kubectl config current-context
 # switch context to a cluster named 'gkeCluster'
 kubectl config set-context gkeCluster
 
+# set context to the current context including webapp namespace
+kubectl config set-context --current --namespace webapp
+
 # change context to a namespace named 'robot-shop' in the cluster named 'gkeCluster'
 kubectl config set-context gkeCluster --namespace robot-shop
 
