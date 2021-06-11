@@ -243,6 +243,12 @@ kubectl exec nginx env
 # open shell to container 'cart' in pod 'mypod'
 kubectl exec -it mypod -c cart -- /bin/bash
 
+# create new temporary pod (deletes upon exit) and get dns info
+kubectl run curlpod --image=nicolaka/netshoot --rm -it -- cat /etc/resolv.conf
+
+# get dns info from a pod that's already running
+kubectl exec –t nginx – cat /etc/resolv.conf
+
 # get the log output for a pod named 'nginx' in the default namespace
 kubectl logs nginx
 
