@@ -269,6 +269,15 @@ kubectl delete po nginx
 
 # edit the configuration of pod 'nginx'
 kubectl edit po nginx
+
+# port forward from 80 on the container to 8080 on the host (your laptop)
+kubectl port-forward nginx 8080:80
+
+# port forward from 9200 on the container to 9200 on the host but run it in the background, so you can get your prompt back
+kubectl port-forward elasticsearch-pod 9200:9200 &
+
+# after port forwarding, you can curl the port on localhost
+curl http://localhost:9200
 ```
 
 </p>
