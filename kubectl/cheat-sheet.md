@@ -70,6 +70,10 @@ kubectl get ns -o yaml
 # list all kubernetes resources in all namespaces
 kubectl get all --all-namespaces
 
+-OR-
+
+kubectl get all -A
+
 # describe the namespace configuration
 kubectl describe ns
 
