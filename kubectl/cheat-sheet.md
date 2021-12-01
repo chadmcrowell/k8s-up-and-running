@@ -333,7 +333,7 @@ kubectl rollout history deploy nginx
 kubectl scale deploy nginx --replicas=5
 
 # set a new image for the deployment with verbose output
-kubectl set image deployments/nginx app=nginx:1.14.2 --v 6
+kubectl set image deployments/nginx nginx=nginx:1.14.2 --v 6
 
 # edit deployment 'nginx'
 kubectl edit deploy nginx
