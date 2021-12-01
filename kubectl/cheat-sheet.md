@@ -141,6 +141,9 @@ kubectl top node mynode1
 # view taints on all nodes
 kubectl get no -o json | jq '.items[].spec.taints'
 
+# view taints with node node names
+kubectl get nodes -o jsonpath="{range .items[*]}{.metadata.name} {.spec.taints[?(@.effect=='NoSchedule')].effect}{\"\n\"}{end}"
+
 # taint node 'mynode1' with a key named 'node-role.kubernetes.io/master' and effect 'NoSchedule'
 kubectl taint no mynode1 node-role.kubernetes.io/master:NoSchedule
 
