@@ -138,6 +138,9 @@ kubectl get nodes -o jsonpath='{items[*].status.addresses[?(@.type=="ExternalIP"
 # view the resource utilization (CPU, memory) of a node named 'mynode1'
 kubectl top node mynode1
 
+# view taints on all nodes
+kubectl get no -o json | jq '.items[].spec.taints'
+
 # taint node 'mynode1' with a key named 'node-role.kubernetes.io/master' and effect 'NoSchedule'
 kubectl taint no mynode1 node-role.kubernetes.io/master:NoSchedule
 
