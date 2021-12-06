@@ -6,6 +6,9 @@
 <p>
 
 ```bash
+# use two kubeconfig files named 'config' and 'kubeconfig2' at the same time
+KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
+
 # list the kube config settings
 kubectl config view
 
