@@ -7,7 +7,10 @@
 
 ```bash
 # use two kubeconfig files named 'config' and 'kubeconfig2' at the same time
-KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
+export KUBECONFIG=kubeconfig1:kubeconfig2:kubeconfig3:kubeconfig4
+
+# flatten kubeconfig and save to ~/.kube directory as a file named config
+kubectl config view --flatten > ~/.kube/config
 
 # list the kube config settings
 kubectl config view
