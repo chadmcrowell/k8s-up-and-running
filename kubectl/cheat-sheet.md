@@ -280,6 +280,9 @@ kubectl logs nginx --tail=20
 # get the streaming log output for a container named 'log' in a pod named 'nginx'
 kubectl logs -f nginx -c log
 
+# tail the logs from a pod named 'nginx' that has one container
+kubectl logs nginx -f
+
 # delete pod 'nginx'
 kubectl delete po nginx
 
@@ -569,6 +572,9 @@ kubectl get svc
 
 # output the yaml manifest for all storage class resources in the default namespace
 kubectl get sc -o yaml
+
+# view the volumes attached to nodes (non-namespaced)
+kubectl get volumeattachments
 
 ```
 
