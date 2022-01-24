@@ -283,6 +283,9 @@ kubectl logs -f nginx -c log
 # tail the logs from a pod named 'nginx' that has one container
 kubectl logs nginx -f
 
+# tail the logs from a pod named 'nginx' that has one container
+kubectl logs nginx --follow
+
 # delete pod 'nginx'
 kubectl delete po nginx
 
