@@ -506,6 +506,27 @@ kubectl get cm --all-namespaces
 # output the yaml manifest for all configmaps in all namespaces
 kubectl get cm --all-namespaces -o yaml
 
+# create a secret named 'db-user-pass' from a file where the key name will be the name of the file
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+
+# create the username and password files from the previous command
+echo -n 'admin' > ./username.txt
+echo -n '1f2budjslkj8' > ./password.txt
+
+# create a secret named 'db-user-pass' from a file and specify the name of the keys as 'username' and 'password'
+kubectl create secret generic db-user-pass --from-file=username=./username.txt --from-file=password=./password.txt
+
+# create a secret named 'vault-license' with the contents of an environment variable named 'secret' and set the key name to 'license'
+kubectl create secret generic vault-license --from-literal="license=${secret}"
+
+# create an environment variable named 'secret' and set it to the contents of a file named 'vault.hclic'
+secret=$(cat valut.hclic)
+
+# create a secret named 'vault-tls' that contains the certificate data for the CA (name of the file is ca) set to the key 'vault.ca',
+# private key (name of the file is key) set to the key 'vault.key', and 
+# PEM (name of the file is vault.example.com.pem) and set to the key 'vault.crt' for a valid tls certificate
+kubectl create secret generic vault-tls --from-file=vault.key=key --from-file=vault.crt=vault.example.com.pem --from-file=vault.ca=ca
+
 # list all secrets in the default namespace
 kubectl get secrets
 
@@ -514,6 +535,12 @@ kubectl get secrets --all-namespaces
 
 # output the yaml manifest for all secrets in all namespaces
 kubectl get secrets --all-namespaces -o yaml
+
+# view the contents of a secret named db-user-pass
+kubectl get secret db-user-pass -o jsonpath='{.data}'
+
+# decode the password output from the previous command
+echo 'MYyZDFUm2N2Rm' | base64 --decode
 
 ```
 
