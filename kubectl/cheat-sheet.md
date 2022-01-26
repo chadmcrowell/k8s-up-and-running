@@ -408,8 +408,11 @@ kubectl create svc nodeport nodeport-svc --tcp=8080:80
 # create a nodePort service 'app-service' from exposing deployment 'nginx'
 kubectl expose deploy nginx --name=app-service --port=80 --type=NodePort
 
-# create a load balancer type service from a deployment
+# create a load balancer type service named 'nginx' from a deployment
 kubectl expose deploy nginx --port 80 --target-port 80 --type LoadBalancer
+
+# Create a second service based on the above service, exposing the container port 8443 as port 443 with the name "nginx-https"
+kubectl expose svc nginx --name nginx-https --port 443 --target-port 8443
 
 # list all services in the default namespace
 kubectl get svc
