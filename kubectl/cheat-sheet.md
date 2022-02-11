@@ -45,6 +45,9 @@ kubectl get events -n kube-system
 # watch as events occur in real time in the default namespace
 kubectl get events -w
 
+# verify version of kubeadm
+kubeadm version
+
 # print the join command to join more nodes to the kubeadm cluster
 sudo kubeadm token create --print-join-command
 
@@ -53,6 +56,12 @@ sudo kubeadm token list
 
 # generate a new token
 sudo kubeadm token generate
+
+# verify the cluster components can be upgraded via kubeadm
+kubeadm upgrade plan
+
+# upgrade the local kubelet configuration
+sudo kubeadm upgrade node
 ```
 
 </p>
