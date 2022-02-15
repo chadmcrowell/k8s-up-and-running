@@ -223,6 +223,12 @@ kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yml
 # list all pods in the default namespace
 kubectl get po
 
+# continuously list all pods in all namespaces with wait flag
+kubectl get po -A -w
+
+# list all ready pods that have the label app=nginx
+kubectl wait --for=condition=ready pod -l app=nginx
+
 # list all pods in all namespaces
 kubectl get po --all-namespaces
 
