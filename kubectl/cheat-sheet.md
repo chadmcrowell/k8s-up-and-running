@@ -496,6 +496,9 @@ kubectl create rolebinding bob-admin-binding --clusterrole=admin --user=bob --na
 # Across the entire cluster, grant the permissions in the "admin" ClusterRole to a user named 'bob'
 kubectl create clusterrolebinding root-cluster-admin-binding --clusterrole=admin --user=bob
 
+# Get the clusterrole membership in system groups
+kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters")'
+
 # list all service accounts in the default namespace
 kubectl get sa
 
