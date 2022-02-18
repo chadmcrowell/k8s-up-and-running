@@ -45,6 +45,9 @@ kubectl get events -n kube-system
 # watch as events occur in real time in the default namespace
 kubectl get events -w
 
+# in a multi-control-plane setup, find the elected leader (in annotations)
+kubectl get ep kube-scheduler -n kube-system -o yaml
+
 # verify version of kubeadm
 kubeadm version
 
