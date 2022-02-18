@@ -118,6 +118,9 @@ kubectl config set-context gkeCluster --user=admin
 
 # set the default context to the cluster 'gkeCluster'
 kubectl config use-context gkeCluster
+
+# delete a cluster named 'docker-desktop' from kubeconfig
+kubectl config delete-cluster docker-desktop
 ```
 
 </p>
@@ -231,6 +234,9 @@ kubectl wait --for=condition=ready pod -l app=nginx
 
 # list all pods in all namespaces
 kubectl get po --all-namespaces
+
+# list all pods in the kube-system namespace and sort by node name
+kubectl get po -o custom-columns=POD:metadata.name,NODE:spec.nodeName --sort-by spec.nodeName -n kube-system
 
 # list all kubernetes resources in all namespaces
 kubectl get all --all-namespaces
