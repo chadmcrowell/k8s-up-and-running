@@ -323,7 +323,7 @@ kubectl port-forward nginx 8080:80
 kubectl port-forward elasticsearch-pod 9200:9200 &
 
 # after port forwarding, you can curl the port on localhost
-curl http://localhost:9200
+curl --head http://localhost:9200
 ```
 
 </p>
