@@ -499,6 +499,9 @@ kubectl create clusterrolebinding root-cluster-admin-binding --clusterrole=admin
 # Get the clusterrole membership in system groups
 kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters")'
 
+# Get the clusterrole membership by name only
+kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters") | .metadata.name'
+
 # list all service accounts in the default namespace
 kubectl get sa
 
