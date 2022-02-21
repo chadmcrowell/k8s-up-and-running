@@ -27,6 +27,12 @@ kubectl get componentstatus
 # list all resources available to create (not currently created)
 kubectl api-resources
 
+# list namespaces resources in the kubernetes cluster
+kubectl api-resources --namespaced=true
+
+# list non-namespaced resources in the kubernetes cluster
+kubectl api-resources --namespaced=false
+
 # get the raw metrics for nodes
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 
