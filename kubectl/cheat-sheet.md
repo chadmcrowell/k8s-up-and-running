@@ -508,6 +508,12 @@ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].
 # Get the clusterrole membership by name only
 kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters") | .metadata.name'
 
+# test authorization for user chad to view secrets in the default namespace
+kubectl auth can-i get secrets --as chad -n default
+
+# test if user chad has authorization to delete pods in the default namespace
+kubectl auth can-i delete pods --as chad -n default
+
 # list all service accounts in the default namespace
 kubectl get sa
 
