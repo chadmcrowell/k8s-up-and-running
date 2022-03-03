@@ -147,6 +147,9 @@ kubectl get no
 # same as previous, but with additional info (including IP address of nodes)
 kubectl get no -o wide
 
+# list nodes with the label kubernetes.io/control-plane (NOTE: You may have to show node labels, depending on the bootstrapper)
+kubectl get no -l node-role.kubernetes.io/control-plane
+
 # describe the configuration of all nodes in the cluster. Add the node name to the end in order to only get a specific node configuration (e.g. kubectl describe no node1)
 kubectl describe no
 
