@@ -165,6 +165,9 @@ kubectl annotate no mynode1 azure=node
 # get the external IP addresses of all the nodes in the default namespace
 kubectl get nodes -o jsonpath='{items[*].status.addresses[?(@.type=="ExternalIP")].addresses}'
 
+# get the name of the first node ([0]) only, in the list of nodes, using jsonpath
+kubectl get no -o jsonpath='{.items[0].metadata.name}'
+
 # view the resource utilization (CPU, memory) of a node named 'mynode1'
 kubectl top node mynode1
 
@@ -249,6 +252,9 @@ kubectl wait --for=condition=ready pod -l app=nginx
 
 # list all pods in all namespaces
 kubectl get po --all-namespaces
+
+# list all pods in all namespaces with a wide output (showing pod IP addresses) and selecting only one node by it's name using field selectors
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=kind-control-plane
 
 # list all pods in the kube-system namespace and sort by node name
 kubectl get po -o custom-columns=POD:metadata.name,NODE:spec.nodeName --sort-by spec.nodeName -n kube-system
