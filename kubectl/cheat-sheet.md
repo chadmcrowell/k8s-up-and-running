@@ -302,7 +302,7 @@ kubectl exec nginx env
 kubectl exec -it mypod -c cart -- /bin/bash
 
 # create new temporary pod (deletes upon exit) and get dns info
-kubectl run curlpod --image=nicolaka/netshoot --rm -it -- cat /etc/resolv.conf
+kubectl run curlpod --image=nicolaka/netshoot --rm -it --restart=Never -- cat /etc/resolv.conf
 
 # create new pod named "netshoot" using image "nicolaka/netshoot" and inserts sleep command to keep it running
 kubectl run netshoot --image=nicolaka/netshoot --command sleep --command "3600"
