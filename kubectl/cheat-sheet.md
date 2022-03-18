@@ -6,6 +6,14 @@
 <p>
 
 ```bash
+# bash autocomplete for kubectl commands
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+# zsh autocompletion for kubectl commands
+source <(kubectl completion zsh)
+echo "source <(kubectl completion zsh)" >> ~/.zshrc
+
 # use two kubeconfig files named 'config' and 'kubeconfig2' at the same time
 export KUBECONFIG=kubeconfig1:kubeconfig2:kubeconfig3:kubeconfig4
 
