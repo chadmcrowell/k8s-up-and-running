@@ -406,6 +406,12 @@ kubectl rollout history deploy nginx
 # scale deployment 'nginx' up to 5 replicas
 kubectl scale deploy nginx --replicas=5
 
+# scale deployment named 'nginx' down to 3 and record it into rollout history
+kubectl scale deploy nginx --replicas 3 --record
+
+# get rollout history of deployment nginx
+kubectl rollout history deploy nginx
+
 # set a new image for the deployment with verbose output
 kubectl set image deployments/nginx nginx=nginx:1.14.2 --v 6
 
