@@ -321,6 +321,9 @@ kubectl exec –t nginx – cat /etc/resolv.conf
 # get the log output for a pod named 'nginx' in the default namespace
 kubectl logs nginx
 
+# get the log output for a pods with the label 'app=nginx' in the default namespace
+kubectl logs -l app=nginx
+
 # same as above but output to a file named 'pod.log'
 kubectl logs nginx > pod.log
 
