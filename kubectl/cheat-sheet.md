@@ -65,6 +65,9 @@ kubectl get ep kube-scheduler -n kube-system -o yaml
 # verify version of kubeadm
 kubeadm version
 
+# view all default values that kubeadm uses to initialize the cluster (with kubeadm init)
+kubeadm config print init-defaults
+
 # print the join command to join more nodes to the kubeadm cluster
 sudo kubeadm token create --print-join-command
 
