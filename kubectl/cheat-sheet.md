@@ -505,6 +505,30 @@ kubectl edit svc app-service
 
 # delete service 'app-service' in the default namespace
 kubectl delete svc app-service
+
+# Create an ingress named 'cool-ing' that takes requests to mycoolwebapp.com/forums to our service named forums-svc on port 8080 with a tls secret "my-cert"
+kubectl create ingress cool-ing --rule="mycoolwebapp.com/forums=forums-svc:8080,tls=my-cert"
+
+# Create an ingress named 'one-ing' that takes all requests to a service named 'myweb-svc' on port 80
+kubectl create ingress one-ing --rule="/path=myweb-svc:80"
+
+# Create an ingress named 'appgw-ing' that adds an annotation for azure application gateways and forwards to 'azurewebapp.com/shop' to our service named 'web-svc' on port 8080
+kubectl create ingress appgw-ing --rule="azurewebapp.com/shop=web-svc:8080" --annotation kubernetes.io/ingress.class=azure/application-gateway
+
+# Create an ingress named 'moo-ing' where all requests going to service 'milk-svc' on port 80 but requests for 'moo.com/flavors' go to service 'flavor-svc' on port 8080
+kubectl create ingress moo-ing --rule="moo.com/=milk-svc:80" --rule="moo.com/flavors=flavor-svc:8080"
+
+# Create an ingress named 'rid-ing' where any requests with prefix 'bikepath.com/seats*' go to service 'seats-svc' on port 8080 and any requests with prefix 'bikepath.com/tires*' go to service 'tires-svc' on port 80 (http)
+kubectl create ingress rid-ing --rule="bikepath.com/seats*=seats-svc:8080" --rule="bikepath.com/tires*=tires-svc:http"
+
+# Create an ingress named 'soup-ing' with TLS enabled for all requests going to service 'soup-svc' on port 443 and any requests with a prefix 'mysoupwebsite.com/stew/carrot*' going to service 'carrots-svc' on port 8080
+kubectl create ingress soup-ing --rule="mysoupwebsite.com/=soup-svc:https,tls" --rule="mysoupwebsite.com/stew/carrot*=carrots-svc:8080"
+
+# Create an ingress named 'ssh-ing' with TLS enabled where all path requests go to service 'shh-svc' on port 8080 and use a secret named 'ssh-ertificate'
+kubectl create ingress shh-ing --rule="lookapassword.com/*=shh-svc:8080,tls=shh-ertificate"
+
+# Create an ingress named 'back-ing' with a default backend that goes to the service 'backdoor-svc' over port 80 and requests for any path at 'floorsdrawersdoors.com' go to service 'front-svc' on port 8080 and use secret named 'knock-knock'
+kubectl create ingress back-ing --default-backend=backdoor-svc:http --rule="floorsdrawersdoors.com/*=front-svc:8080,tls=knock-knock"
 ```
 
 </p>
