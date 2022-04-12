@@ -312,6 +312,9 @@ kubectl exec nginx env
 # open shell to container 'cart' in pod 'mypod'
 kubectl exec -it mypod -c cart -- /bin/bash
 
+# startup a pod named 'bux' and issue a command inside the container that will echo hello for two seconds and then stop
+kubectl exec -it bux -- sh -c "while true; do echo hello; sleep 2; done"
+
 # create new temporary pod (deletes upon exit) and get dns info
 kubectl run curlpod --image=nicolaka/netshoot --rm -it --restart=Never -- cat /etc/resolv.conf
 
