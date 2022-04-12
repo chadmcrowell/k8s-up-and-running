@@ -249,6 +249,9 @@ kubectl run curlpod --image=nicolaka/netshoot --rm -it -- sh
 # run a pod to troubleshoot dns and get a shell to it
 kubectl run dnstools --image infoblox/dnstools --rm -it -- bash
 
+# start a pod named 'debug-pod' and get a shell to the container (keeping it running after exit)
+kubectl run debug-pod --image=busybox -it
+
 # create a pod yaml file named pod.yml
 kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yml
 
