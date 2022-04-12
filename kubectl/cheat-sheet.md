@@ -409,6 +409,9 @@ kubectl rollout resume deploy nginx
 # get status of rollout
 kubectl rollout status deployment/nginx
 
+# restart pods in a deployment
+kubectl rollout restart deployment/nginx
+
 # get rollout history
 kubectl rollout history deploy nginx
 
