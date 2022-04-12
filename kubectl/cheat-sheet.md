@@ -515,6 +515,9 @@ kubectl create ingress one-ing --rule="/path=myweb-svc:80"
 # Create an ingress named 'appgw-ing' that adds an annotation for azure application gateways and forwards to 'azurewebapp.com/shop' to our service named 'web-svc' on port 8080
 kubectl create ingress appgw-ing --rule="azurewebapp.com/shop=web-svc:8080" --annotation kubernetes.io/ingress.class=azure/application-gateway
 
+# Create an ingress named 'rewir-ing' with an annotation to rewrite the path for nginx ingress controllers
+kubectl create ingress rewire-ing --rule="circuitweb.com/shop=web-svc:8080" --annotation "nginx.ingress.kubernetes.io/rewrite-target= /"
+
 # Create an ingress named 'moo-ing' where all requests going to service 'milk-svc' on port 80 but requests for 'moo.com/flavors' go to service 'flavor-svc' on port 8080
 kubectl create ingress moo-ing --rule="moo.com/=milk-svc:80" --rule="moo.com/flavors=flavor-svc:8080"
 
