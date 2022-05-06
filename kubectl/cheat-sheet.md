@@ -82,6 +82,9 @@ kubeadm upgrade plan
 
 # upgrade the local kubelet configuration
 sudo kubeadm upgrade node
+
+# view enabled admission controllers
+kubectl exec kube-apiserver-kind-control-plane -n kube-system -- kube-apiserver -h | grep enable-admission-plugins
 ```
 
 </p>
