@@ -85,6 +85,9 @@ sudo kubeadm upgrade node
 
 # view enabled admission controllers
 kubectl exec kube-apiserver-kind-control-plane -n kube-system -- kube-apiserver -h | grep enable-admission-plugins
+
+# view enabled and disabled admission controllers
+ps -ef | grep kube-apiserver | grep admission-plugins
 ```
 
 </p>
