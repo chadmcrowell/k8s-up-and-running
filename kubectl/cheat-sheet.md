@@ -258,6 +258,9 @@ kubectl run dnstools --image infoblox/dnstools --rm -it -- bash
 # start a pod named 'debug-pod' and get a shell to the container (keeping it running after exit)
 kubectl run debug-pod --image=busybox -it
 
+# run a pod to test networking using curl
+kubectl run --rm -i -tty curl --image=curlimages/curl --restart=Never -- sh
+
 # create a pod yaml file named pod.yml
 kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yml
 
