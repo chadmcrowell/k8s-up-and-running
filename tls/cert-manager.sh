@@ -23,12 +23,9 @@ helm repo update
 kubectl create ns cert-manager
 
 # install cert manager
-helm install \
+helm upgrade --install \
 cert-manager jetstack/cert-manager \
 --namespace cert-manager \
 --create-namespace \
---version v1.3.1 \
---set installCRDs=true
-
-# Label the lets-encrypt namespace to disable resource validation
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+--version v1.15.1 \
+--set crds.enabled=true
