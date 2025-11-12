@@ -32,7 +32,7 @@ var tags = {
 var agentPoolName = 'agentpool01'
 
 // Azure virtual network
-resource vn 'Microsoft.Network/virtualNetworks@2020-06-01' = {
+resource vn 'Microsoft.Network/virtualNetworks@2023-11-01' = {
   name: virtualNetworkName
   location: location
   tags: tags
@@ -54,7 +54,7 @@ resource vn 'Microsoft.Network/virtualNetworks@2020-06-01' = {
 }
 
 // Azure kubernetes service
-resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
+resource aks 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
   name: clusterName
   location: location
   tags: tags
