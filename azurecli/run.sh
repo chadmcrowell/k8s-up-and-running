@@ -16,12 +16,11 @@ az aks create \
 --enable-managed-identity \
 -c 3 \
 --ssh-key-value /home/$USER/.ssh/id_rsa.pub \
--k 1.19.7 \
+-k 1.34.1 \
 --enable-cluster-autoscaler \
 --min-count 3 \
 --max-count 5 \
 --load-balancer-sku standard
-
 
 
 
